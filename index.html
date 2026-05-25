@@ -38,90 +38,26 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-sans); background: var(--color-background-primary); color: var(--color-text-primary); padding: 1.5rem; max-width: 900px; margin: 0 auto; }
 
-    .platform { padding: 0.5rem 0; }
-    .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
-    .header-left h1 { font-size: 18px; font-weight: 500; color: var(--color-text-primary); }
-    .header-left p { font-size: 13px; color: var(--color-text-secondary); margin-top: 2px; }
-    .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #1D9E75; margin-right: 6px; animation: pulse 1.8s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
-    .section-title { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+    /* --- Базовый body — нейтральный --- */
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-background-primary);
+      color: var(--color-text-primary);
+      min-height: 100vh;
+    }
 
-    .online-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
-    .metric-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.9rem 1rem; }
-    .metric-card .label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 6px; }
-    .metric-card .value { font-size: 22px; font-weight: 500; color: var(--color-text-primary); }
-    .metric-card .sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 3px; }
-    .metric-card.green .value { color: #1D9E75; }
-    .metric-card.blue .value { color: #185FA5; }
-    .metric-card.amber .value { color: #BA7517; }
-
-    .status-section { margin-bottom: 1.5rem; }
-    .status-scroll { display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; padding-right: 2px; }
-    .status-row { display: flex; align-items: center; gap: 10px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 8px 12px; }
-    .avatar { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; flex-shrink: 0; }
-    .av-green { background: #E1F5EE; color: #0F6E56; }
-    .av-gray { background: #F1EFE8; color: #5F5E5A; }
-    .av-blue { background: #E6F1FB; color: #185FA5; }
-    .av-amber { background: #FAEEDA; color: #854F0B; }
-    .status-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .status-activity { font-size: 12px; color: var(--color-text-secondary); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .status-badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; flex-shrink: 0; font-weight: 500; }
-    .badge-online { background: #E1F5EE; color: #0F6E56; }
-    .badge-offline { background: #F1EFE8; color: #5F5E5A; }
-    .badge-break { background: #FAEEDA; color: #854F0B; }
-    .status-time { font-size: 12px; color: var(--color-text-secondary); flex-shrink: 0; min-width: 44px; text-align: right; }
-
-    .leaderboard-section { margin-bottom: 1.5rem; }
-    .lb-list { display: flex; flex-direction: column; gap: 6px; }
-    .lb-row { display: flex; align-items: center; gap: 10px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 8px 12px; transition: border-color 0.15s; }
-    .lb-row:hover { border-color: var(--color-border-secondary); }
-    .lb-rank { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); min-width: 20px; text-align: center; }
-    .rank-gold { color: #BA7517; }
-    .rank-silver { color: #888780; }
-    .rank-bronze { color: #993C1D; }
-    .lb-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); flex: 1; }
-    .lb-xp { font-size: 12px; color: var(--color-text-secondary); }
-    .lb-bar-wrap { width: 80px; height: 5px; background: var(--color-background-secondary); border-radius: 3px; overflow: hidden; }
-    .lb-bar { height: 100%; border-radius: 3px; background: #1D9E75; }
-    .lb-badges { display: flex; gap: 3px; }
-    .ach-icon { font-size: 14px; }
-
-    .ach-section { margin-bottom: 0.5rem; }
-    .ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
-    .ach-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 10px 12px; display: flex; flex-direction: column; gap: 5px; }
-    .ach-card.unlocked { border-color: #5DCAA5; background: #E1F5EE; }
-    .ach-card.locked { opacity: 0.5; }
-    .ach-emo { font-size: 20px; }
-    .ach-name { font-size: 12px; font-weight: 500; color: var(--color-text-primary); }
-    .ach-card.unlocked .ach-name { color: #085041; }
-    .ach-desc { font-size: 11px; color: var(--color-text-secondary); }
-    .ach-card.unlocked .ach-desc { color: #0F6E56; }
-
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
-    @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
-
-    .filter-row { display: flex; gap: 6px; margin-bottom: 10px; }
-    .filter-btn { font-size: 12px; padding: 4px 10px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-secondary); cursor: pointer; }
-    .filter-btn.active { background: var(--color-background-secondary); color: var(--color-text-primary); border-color: var(--color-border-primary); }
-
-    /* Индикатор загрузки */
-    .loading { font-size: 12px; color: var(--color-text-secondary); padding: 12px 0; }
-    .error-msg { font-size: 12px; color: #993C1D; padding: 8px 12px; background: #FAECE7; border-radius: var(--border-radius-md); margin-bottom: 8px; }
-
-    /*тут регистрация*/
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { 
-      font-family: var(--font-sans); 
-      background: var(--color-background-primary); 
-      color: var(--color-text-primary); 
-      display: flex;
+    /* ==============================
+       ЭКРАН ЛОГИНА
+    ============================== */
+    #login-screen {
+      display: none; /* показывается через JS */
       align-items: center;
       justify-content: center;
       min-height: 100vh;
       padding: 1.5rem;
     }
+    #login-screen.visible { display: flex; }
 
     .login-card {
       background: var(--color-background-primary);
@@ -131,12 +67,12 @@
       width: 100%;
       max-width: 360px;
       text-align: center;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
     }
 
     .logo-area { margin-bottom: 1.5rem; }
     .logo-area h1 { font-size: 20px; font-weight: 500; margin-bottom: 4px; }
-    .logo-area p { font-size: 13px; color: var(--color-text-secondary); }
+    .logo-area p  { font-size: 13px; color: var(--color-text-secondary); }
 
     .google-btn {
       display: flex;
@@ -156,122 +92,228 @@
     }
     .google-btn:hover { opacity: 0.9; }
 
-    .error-msg { 
-      font-size: 12px; 
-      color: #993C1D; 
-      padding: 8px 12px; 
-      background: #FAECE7; 
-      border-radius: var(--border-radius-md); 
-      margin-bottom: 12px; 
-      display: none;
-      text-align: left;
+    /* ==============================
+       ЭКРАН ДАШБОРДА
+    ============================== */
+    #dashboard-screen {
+      display: none; /* показывается через JS */
+      padding: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
+    #dashboard-screen.visible { display: block; }
 
+    .platform { padding: 0.5rem 0; }
+    .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+    .header-left h1 { font-size: 18px; font-weight: 500; color: var(--color-text-primary); }
+    .header-left p  { font-size: 13px; color: var(--color-text-secondary); margin-top: 2px; }
+    .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #1D9E75; margin-right: 6px; animation: pulse 1.8s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+    .section-title { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
 
+    .online-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+    .metric-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.9rem 1rem; }
+    .metric-card .label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 6px; }
+    .metric-card .value { font-size: 22px; font-weight: 500; color: var(--color-text-primary); }
+    .metric-card .sub   { font-size: 12px; color: var(--color-text-secondary); margin-top: 3px; }
+    .metric-card.green .value { color: #1D9E75; }
+    .metric-card.blue  .value { color: #185FA5; }
+    .metric-card.amber .value { color: #BA7517; }
 
-    
+    .status-section { margin-bottom: 1.5rem; }
+    .status-scroll  { display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; padding-right: 2px; }
+    .status-row { display: flex; align-items: center; gap: 10px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 8px 12px; }
+    .avatar  { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; flex-shrink: 0; }
+    .av-green { background: #E1F5EE; color: #0F6E56; }
+    .av-gray  { background: #F1EFE8; color: #5F5E5A; }
+    .av-blue  { background: #E6F1FB; color: #185FA5; }
+    .av-amber { background: #FAEEDA; color: #854F0B; }
+    .status-name     { font-size: 13px; font-weight: 500; color: var(--color-text-primary); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .status-activity { font-size: 12px; color: var(--color-text-secondary); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .status-badge    { font-size: 11px; padding: 2px 8px; border-radius: 20px; flex-shrink: 0; font-weight: 500; }
+    .badge-online  { background: #E1F5EE; color: #0F6E56; }
+    .badge-offline { background: #F1EFE8; color: #5F5E5A; }
+    .badge-break   { background: #FAEEDA; color: #854F0B; }
+    .status-time   { font-size: 12px; color: var(--color-text-secondary); flex-shrink: 0; min-width: 44px; text-align: right; }
+
+    .leaderboard-section { margin-bottom: 1.5rem; }
+    .lb-list { display: flex; flex-direction: column; gap: 6px; }
+    .lb-row  { display: flex; align-items: center; gap: 10px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 8px 12px; transition: border-color 0.15s; }
+    .lb-row:hover { border-color: var(--color-border-secondary); }
+    .lb-rank   { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); min-width: 20px; text-align: center; }
+    .rank-gold   { color: #BA7517; }
+    .rank-silver { color: #888780; }
+    .rank-bronze { color: #993C1D; }
+    .lb-name    { font-size: 13px; font-weight: 500; color: var(--color-text-primary); flex: 1; }
+    .lb-xp      { font-size: 12px; color: var(--color-text-secondary); }
+    .lb-bar-wrap { width: 80px; height: 5px; background: var(--color-background-secondary); border-radius: 3px; overflow: hidden; }
+    .lb-bar     { height: 100%; border-radius: 3px; background: #1D9E75; }
+
+    .ach-section { margin-bottom: 0.5rem; }
+    .ach-grid   { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+    .ach-card   { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 10px 12px; display: flex; flex-direction: column; gap: 5px; }
+    .ach-card.unlocked { border-color: #5DCAA5; background: #E1F5EE; }
+    .ach-card.locked   { opacity: 0.5; }
+    .ach-emo  { font-size: 20px; }
+    .ach-name { font-size: 12px; font-weight: 500; color: var(--color-text-primary); }
+    .ach-card.unlocked .ach-name { color: #085041; }
+    .ach-desc { font-size: 11px; color: var(--color-text-secondary); }
+    .ach-card.unlocked .ach-desc { color: #0F6E56; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+    .filter-row  { display: flex; gap: 6px; margin-bottom: 10px; }
+    .filter-btn  { font-size: 12px; padding: 4px 10px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-secondary); cursor: pointer; }
+    .filter-btn.active { background: var(--color-background-secondary); color: var(--color-text-primary); border-color: var(--color-border-primary); }
+
+    .loading   { font-size: 12px; color: var(--color-text-secondary); padding: 12px 0; }
+    .error-msg { font-size: 12px; color: #993C1D; padding: 8px 12px; background: #FAECE7; border-radius: var(--border-radius-md); margin-bottom: 8px; display: none; text-align: left; }
   </style>
 </head>
 <body>
 
-  <div class="login-card">
-  <div class="logo-area">
-    <h1>Учебная платформа</h1>
-    <p>Добро пожаловать. Пожалуйста, войдите в аккаунт.</p>
-  </div>
-
-  <div id="error-banner" class="error-msg"></div>
-
-  <button class="google-btn" id="btn-google" onclick="loginWithGoogle()">
-    <i class="ti ti-brand-google" style="font-size: 18px; color: #EA4335;"></i>
-    Войти через Google
-  </button>
-</div>
-  
-
-<div class="platform">
-  <div class="header">
-    <div class="header-left">
-      <h1><span class="live-dot"></span>Учебная платформа</h1>
-      <!-- Статус подключения меняется автоматически -->
-      <p id="conn-status">Подключение к Supabase...</p>
-    </div>
-    <div style="font-size: 12px; color: var(--color-text-secondary); text-align: right;">
-      <div id="clock" style="font-size: 15px; font-weight: 500; color: var(--color-text-primary);"></div>
-      <div>сегодня</div>
-    </div>
-  </div>
-
-  <!-- Ошибка подключения (скрыта по умолчанию) -->
-  <div id="error-banner" class="error-msg" style="display:none;"></div>
-
-  <!-- Метрики -->
-  <div class="section-title">обзор</div>
-  <div class="online-grid" style="margin-bottom: 1.5rem;">
-    <div class="metric-card green">
-      <div class="label"><i class="ti ti-users"></i> онлайн сейчас</div>
-      <div class="value" id="online-count">—</div>
-      <div class="sub" id="total-sub">из — студентов</div>
-    </div>
-    <div class="metric-card blue">
-      <div class="label"><i class="ti ti-clock"></i> часов сегодня</div>
-      <div class="value" id="hours-today">—</div>
-      <div class="sub">суммарно по группе</div>
-    </div>
-    <div class="metric-card amber">
-      <div class="label"><i class="ti ti-flame"></i> streak лидер</div>
-      <div class="value" id="streak-value">—</div>
-      <div class="sub" id="streak-name">загрузка...</div>
-    </div>
-    <div class="metric-card">
-      <div class="label"><i class="ti ti-star"></i> XP за неделю</div>
-      <div class="value" id="xp-week">—</div>
-      <div class="sub">суммарно</div>
-    </div>
-  </div>
-
-  <div class="two-col">
-    <!-- Топ студентов -->
-    <div class="leaderboard-section">
-      <div class="section-title">топ студентов</div>
-      <div class="filter-row">
-        <button class="filter-btn active" onclick="setFilter(this,'week')">Неделя</button>
-        <button class="filter-btn" onclick="setFilter(this,'month')">Месяц</button>
-        <button class="filter-btn" onclick="setFilter(this,'all')">Всё время</button>
+  <!-- ====== ЭКРАН ВХОДА ====== -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="logo-area">
+        <h1>Учебная платформа</h1>
+        <p>Добро пожаловать. Пожалуйста, войдите в аккаунт.</p>
       </div>
-      <div class="lb-list" id="lb-list"><div class="loading">Загрузка...</div></div>
-    </div>
-
-    <!-- Достижения — статичные, настрой под себя -->
-    <div class="ach-section">
-      <div class="section-title">достижения</div>
-      <div class="ach-grid" id="ach-grid"></div>
+      <div id="login-error" class="error-msg"></div>
+      <button class="google-btn" id="btn-google" onclick="loginWithGoogle()">
+        <i class="ti ti-brand-google" style="font-size: 18px; color: #EA4335;"></i>
+        Войти через Google
+      </button>
     </div>
   </div>
 
-  <!-- Статусы -->
-  <div class="status-section">
-    <div class="section-title">монитор статусов</div>
-    <div class="status-scroll" id="status-list"><div class="loading">Загрузка...</div></div>
+  <!-- ====== ЭКРАН ДАШБОРДА ====== -->
+  <div id="dashboard-screen">
+    <div class="platform">
+      <div class="header">
+        <div class="header-left">
+          <h1><span class="live-dot"></span>Учебная платформа</h1>
+          <p id="conn-status">Подключение к Supabase...</p>
+        </div>
+        <div style="font-size: 12px; color: var(--color-text-secondary); text-align: right;">
+          <div id="clock" style="font-size: 15px; font-weight: 500; color: var(--color-text-primary);"></div>
+          <div>сегодня</div>
+        </div>
+      </div>
+
+      <div id="error-banner" class="error-msg"></div>
+
+      <div class="section-title">обзор</div>
+      <div class="online-grid" style="margin-bottom: 1.5rem;">
+        <div class="metric-card green">
+          <div class="label"><i class="ti ti-users"></i> онлайн сейчас</div>
+          <div class="value" id="online-count">—</div>
+          <div class="sub" id="total-sub">из — студентов</div>
+        </div>
+        <div class="metric-card blue">
+          <div class="label"><i class="ti ti-clock"></i> часов сегодня</div>
+          <div class="value" id="hours-today">—</div>
+          <div class="sub">суммарно по группе</div>
+        </div>
+        <div class="metric-card amber">
+          <div class="label"><i class="ti ti-flame"></i> streak лидер</div>
+          <div class="value" id="streak-value">—</div>
+          <div class="sub" id="streak-name">загрузка...</div>
+        </div>
+        <div class="metric-card">
+          <div class="label"><i class="ti ti-star"></i> XP за неделю</div>
+          <div class="value" id="xp-week">—</div>
+          <div class="sub">суммарно</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="leaderboard-section">
+          <div class="section-title">топ студентов</div>
+          <div class="filter-row">
+            <button class="filter-btn active" onclick="setFilter(this,'week')">Неделя</button>
+            <button class="filter-btn" onclick="setFilter(this,'month')">Месяц</button>
+            <button class="filter-btn" onclick="setFilter(this,'all')">Всё время</button>
+          </div>
+          <div class="lb-list" id="lb-list"><div class="loading">Загрузка...</div></div>
+        </div>
+
+        <div class="ach-section">
+          <div class="section-title">достижения</div>
+          <div class="ach-grid" id="ach-grid"></div>
+        </div>
+      </div>
+
+      <div class="status-section">
+        <div class="section-title">монитор статусов</div>
+        <div class="status-scroll" id="status-list"><div class="loading">Загрузка...</div></div>
+      </div>
+    </div>
   </div>
-</div>
 
 <script>
-
 const SUPABASE_URL  = 'https://wvejqgvrlyandnprjsak.supabase.co'
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind2ZWpxZ3ZybHlhbmRucHJqc2FrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2MjczODEsImV4cCI6MjA5MTIwMzM4MX0.m7nsXes6n9EBlA0BH97F9erN7-TDLD6yayjOvMv6sdY'
-// ============================================================
 
 const { createClient } = supabase
 const db = createClient(SUPABASE_URL, SUPABASE_ANON)
 
-// ---- Вспомогательные функции ----
+// ==============================
+// АВТОРИЗАЦИЯ
+// ==============================
+
+function showLoginScreen() {
+  document.getElementById('login-screen').classList.add('visible')
+  document.getElementById('dashboard-screen').classList.remove('visible')
+}
+
+function showDashboard() {
+  document.getElementById('login-screen').classList.remove('visible')
+  document.getElementById('dashboard-screen').classList.add('visible')
+}
+
+async function loginWithGoogle() {
+  const btn = document.getElementById('btn-google')
+  const errBanner = document.getElementById('login-error')
+
+  btn.disabled = true
+  btn.style.opacity = '0.6'
+  errBanner.style.display = 'none'
+
+  const { error } = await db.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: 'https://akikochka.github.io/Zadanie/index.html'
+    }
+  })
+
+  if (error) {
+    errBanner.textContent = `Ошибка: ${error.message}`
+    errBanner.style.display = 'block'
+    btn.disabled = false
+    btn.style.opacity = '1'
+  }
+}
+
+async function checkAuth() {
+  const { data: { session } } = await db.auth.getSession()
+  if (session) {
+    showDashboard()
+    initDashboard()
+  } else {
+    showLoginScreen()
+  }
+}
+
+// ==============================
+// ДАШБОРД
+// ==============================
 
 function initials(name) {
   return (name || '??').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
 }
 
-// Цвет аватара по первой букве имени
 const AV_COLORS = ['av-green', 'av-blue', 'av-amber', 'av-gray']
 function avatarColor(name) {
   const code = (name || 'A').charCodeAt(0)
@@ -292,7 +334,6 @@ function showError(msg) {
   el.style.display = 'block'
 }
 
-// Форматирует длительность сессии: session_start (ISO) → "1ч 23м"
 function sessionDuration(sessionStart) {
   if (!sessionStart) return ''
   const mins = Math.floor((Date.now() - new Date(sessionStart)) / 60000)
@@ -302,7 +343,6 @@ function sessionDuration(sessionStart) {
   return h > 0 ? `${h}ч ${m}м` : `${m}м`
 }
 
-// ---- Достижения (статичные — настрой иконки/условия под себя) ----
 const ACHIEVEMENTS = [
   { icon: '🔥', name: 'Streak 7 дней',  desc: 'Заходи 7 дней подряд',    unlocked: true  },
   { icon: '📚', name: 'Читатель',        desc: '10 уроков завершено',      unlocked: true  },
@@ -322,11 +362,8 @@ function renderAchievements() {
   `).join('')
 }
 
-// ---- Рейтинг ----
 const rankClasses = ['rank-gold','rank-silver','rank-bronze','','']
 const rankIcons   = ['①','②','③','4','5']
-
-// Текущий период для повторной загрузки при реалтайм-обновлении
 let currentPeriod = 'week'
 
 function setFilter(btn, period) {
@@ -339,7 +376,6 @@ function setFilter(btn, period) {
 async function loadLeaderboard(period) {
   document.getElementById('lb-list').innerHTML = '<div class="loading">Загрузка...</div>'
 
-  // Диапазон дат для фильтра
   const now = new Date()
   let since = null
   if (period === 'week') {
@@ -348,16 +384,11 @@ async function loadLeaderboard(period) {
     since = new Date(now - 30 * 86400000).toISOString()
   }
 
-  // Запрос: если таблица profiles имеет колонку xp — сортируем по ней.
-  // Если хочешь фильтровать по дате — добавь колонку xp_updated_at и раскомментируй .gte(...)
   let query = db
     .from('profiles')
     .select('id, username, status, xp, streak')
     .order('xp', { ascending: false })
     .limit(5)
-
-  // Раскомментируй, когда добавишь колонку xp_updated_at:
-  // if (since) query = query.gte('xp_updated_at', since)
 
   const { data, error } = await query
 
@@ -375,9 +406,9 @@ async function loadLeaderboard(period) {
   const maxXp = data[0].xp || 1
 
   document.getElementById('lb-list').innerHTML = data.map((s, i) => {
-    const pct  = Math.round((s.xp || 0) / maxXp * 100)
-    const av   = initials(s.username)
-    const avc  = avatarColor(s.username)
+    const pct = Math.round((s.xp || 0) / maxXp * 100)
+    const av  = initials(s.username)
+    const avc = avatarColor(s.username)
     return `
       <div class="lb-row">
         <span class="lb-rank ${rankClasses[i] || ''}">${rankIcons[i] || i + 1}</span>
@@ -390,12 +421,11 @@ async function loadLeaderboard(period) {
   }).join('')
 }
 
-// ---- Монитор статусов ----
 async function loadStatuses() {
   const { data, error } = await db
     .from('profiles')
     .select('id, username, status, activity, session_start')
-    .order('status', { ascending: true }) // online идёт первым
+    .order('status', { ascending: true })
 
   if (error) {
     document.getElementById('status-list').innerHTML = '<div class="loading">Ошибка загрузки</div>'
@@ -425,7 +455,6 @@ async function loadStatuses() {
   }).join('')
 }
 
-// ---- Метрики ----
 async function loadMetrics() {
   const { data, error } = await db
     .from('profiles')
@@ -434,20 +463,17 @@ async function loadMetrics() {
   if (error) { console.error('loadMetrics:', error); return }
   if (!data) return
 
-  const total   = data.length
-  const online  = data.filter(r => r.status === 'online').length
+  const total  = data.length
+  const online = data.filter(r => r.status === 'online').length
 
-  // Суммарные часы (по session_start активных)
   const totalMins = data
     .filter(r => r.status === 'online' && r.session_start)
     .reduce((acc, r) => acc + Math.floor((Date.now() - new Date(r.session_start)) / 60000), 0)
   const totalHours = (totalMins / 60).toFixed(1)
 
-  // Streak лидер
   const streakLeader = data.reduce((best, r) =>
     (r.streak || 0) > (best.streak || 0) ? r : best, data[0])
 
-  // Суммарный XP за неделю (нужна колонка xp_week или считаем из xp)
   const totalXp = data.reduce((sum, r) => sum + (r.xp || 0), 0)
 
   document.getElementById('online-count').textContent = online
@@ -458,25 +484,21 @@ async function loadMetrics() {
   document.getElementById('xp-week').textContent      = totalXp.toLocaleString('ru-RU')
 }
 
-// ---- Начальная загрузка ----
-async function init() {
-  // Проверяем подключение простым запросом
+async function initDashboard() {
   const { error } = await db.from('profiles').select('id').limit(1)
 
   if (error) {
     document.getElementById('conn-status').textContent = 'Ошибка подключения к Supabase'
-    showError(`Не удалось подключиться: ${error.message}. Проверь SUPABASE_URL и SUPABASE_ANON в коде.`)
+    showError(`Не удалось подключиться: ${error.message}`)
     console.error(error)
     return
   }
 
   document.getElementById('conn-status').textContent = 'Подключено · данные в реальном времени'
 
-  // Первая загрузка
   await Promise.all([loadMetrics(), loadLeaderboard('week'), loadStatuses()])
   renderAchievements()
 
-  // ---- Реалтайм — любые изменения в profiles → обновляем всё ----
   db.channel('profiles-live')
     .on('postgres_changes',
       { event: '*', schema: 'public', table: 'profiles' },
@@ -489,57 +511,16 @@ async function init() {
     .subscribe()
 }
 
-// ---- Часы ----
+// Часы
 function updateClock() {
   document.getElementById('clock').textContent =
     new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
 }
-
 updateClock()
 setInterval(updateClock, 1000)
-init()
 
-// опять регистрация, но по скрипту
-
-
-  const { createClient } = supabase
-const db = createClient(SUPABASE_URL, SUPABASE_ANON)
-
-async function loginWithGoogle() {
-  const btn = document.getElementById('btn-google')
-  const errBanner = document.getElementById('error-banner')
-  
-  btn.disabled = true
-  btn.style.opacity = '0.6'
-  errBanner.style.display = 'none'
-
-  const { error } = await db.auth.signInWithOAuth({
-    provider: 'google',
-    options: {
-      // Куда перенаправить чувака после успешного логина (меняй на свой URL, если залила на хостинг)
-      redirectTo: 'https://akikochka.github.io/Zadanie/index.html'
-    }
-  })
-
-  if (error) {
-    errBanner.textContent = `Ошибка: ${error.message}`
-    errBanner.style.display = 'block'
-    btn.disabled = false
-    btn.style.opacity = '1'
-  }
-}
-
-// Быстрая проверка: если чувак уже авторизован — кидаем на главную
-async function checkUser() {
-  const { data: { session } } = await db.auth.getSession()
-  if (session) {
-    window.location.href = 'index.html'
-  }
-}
-checkUser()
-  
-
-  
+// Старт
+checkAuth()
 </script>
 </body>
 </html>
